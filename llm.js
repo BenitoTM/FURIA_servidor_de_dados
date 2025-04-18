@@ -30,7 +30,7 @@ app.post("/llm", async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer OPENROUTER_API_KEY`,
           "Content-Type": "application/json",
         },
       }
