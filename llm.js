@@ -2,6 +2,10 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 
+require('dotenv').config();
+
+const API_TOKEN = process.env.API_TOKEN;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -30,7 +34,7 @@ app.post("/llm", async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer OPENROUTER_API_KEY`,
+          Authorization: API_TOKEN,
           "Content-Type": "application/json",
         },
       }
