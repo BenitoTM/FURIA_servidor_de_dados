@@ -8,9 +8,15 @@ const PORT = 3000;
 const FURIA_ID = 8297;
 
 app.get("/team", async (req, res) => {
-  const team = await HLTV.getTeam({ id: FURIA_ID });
-  res.json(team);
+  try {
+    const team = await HLTV.getTeam({ id: FURIA_ID });
+    res.json(team);
+  } catch (err) {
+    console.error("Erro no /team:", err.message);
+    res.status(500).json({ error: "Erro ao buscar dados do time FURIA." });
+  }
 });
+
 
 app.get("/matches", async (req, res) => {
   const matches = await HLTV.getMatches(); 
